@@ -1,0 +1,17 @@
+### Health
+GET http://localhost:5000/api/health
+
+### Get all applications
+GET http://localhost:5000/api/applications
+
+### Create application
+POST http://localhost:5000/api/applications
+Content-Type: application/json
+
+{
+  "company": "Tech",
+  "role": "Software Engineer",
+  "status": "Applied",
+  "appliedDate": "2026-01-15",
+  "notes": "Applied via Joe"
+}
