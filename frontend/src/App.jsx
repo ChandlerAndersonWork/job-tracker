@@ -21,7 +21,7 @@ useEffect(() => {
   return <h1>Backend status: {status}</h1>
   
 }
-//test2
+
 export default App
   /** const [count, setCount] = useState(0)
   return (
