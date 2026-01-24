@@ -4,8 +4,46 @@
 // import './App.css'
 */
 import { useEffect, useState } from "react";
+import { fetchApplications } from "./api/applications";
+
+function App() {
+  const [applications, setApplications] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    async function load() {
+      try {
+        const data = await fetchApplications();
+        console.log("Applications from backend: ", data);
+        setApplications(data);
+      } catch (err) {
+        console.error(err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    load();
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+
+  return (
+    <div style ={{ padding: "2rem" }}>
+      <h1>Job Applications</h1>
+      <pre>{JSON.stringify(applications, null, 2)}</pre>
+    </div>
+  );
 
 
+}
+
+export default App;
+
+/*
 function App() {
   const [status, setStatus] = useState("");
 
@@ -22,7 +60,10 @@ useEffect(() => {
   
 }
 
-export default App
+export default App */
+
+
+
   /** const [count, setCount] = useState(0)
   return (
     <>
