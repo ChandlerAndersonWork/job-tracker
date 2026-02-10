@@ -26,17 +26,19 @@ Full-stack job application tracking system built with React, Node.js, Express, a
 
 ## Architecture
 job-tracker/  
-  frontend/  
-    src/  
-      api/  
-      components/  
-      types/  
-  backend/  
-    src/  
-      controllers/  
-      db/  
-      models/  
-      routes/  
+-frontend/  
+--src/  
+---api/  
+---components/  
+---types/  
+
+
+-backend/  
+--src/  
+---controllers/  
+---db/  
+---models/  
+---routes/  
 
 Backend follows a layered pattern:
 Routes -> Controllers -> Models -> Database
