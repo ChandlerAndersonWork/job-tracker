@@ -5,11 +5,17 @@
 */
 import { useEffect, useState } from "react";
 import { fetchApplications } from "./api/applications";
+import ApplicationsTable from "./components/ApplicationsTable";
+import NewApplicationForm from "./components/NewApplicationForm";
 
 function App() {
   const [applications, setApplications] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  function handleCreated(app) {
+    setApplications((prev) => [app, ...prev]);
+  }
 
   useEffect(() => {
     async function load() {
@@ -32,9 +38,16 @@ function App() {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <div style ={{ padding: "2rem" }}>
+    // <div style ={{ padding: "2rem" }}>
+    //   <h1>Job Applications</h1>
+    //   <pre>{JSON.stringify(applications, null, 2)}</pre>
+    // </div>
+    
+    <div style={{ padding: "2rem" }}>
       <h1>Job Applications</h1>
-      <pre>{JSON.stringify(applications, null, 2)}</pre>
+      <NewApplicationForm onCreated = {handleCreated}/>
+      
+      <ApplicationsTable applications={applications}/>
     </div>
   );
 
