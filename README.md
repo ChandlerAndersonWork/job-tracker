@@ -71,6 +71,7 @@ App runs on:
 localhost:5173
 
 ### Future Improvements
+- Update UI to get rid of 90s website look
 - Status filtering
 - Inline notes editing
 - Authentication
