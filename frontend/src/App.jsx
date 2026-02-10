@@ -17,6 +17,16 @@ function App() {
     setApplications((prev) => [app, ...prev]);
   }
 
+  function handleUpdated(updatedApp) {
+    setApplications((prev) => 
+    prev.map((app) => (app.id === updatedApp.id ? updatedApp : app))
+    );
+  }
+
+  function handleDeleted(id) {
+    setApplications((prev) => prev.filter((app) => app.id !== id));
+  }
+
   useEffect(() => {
     async function load() {
       try {
@@ -47,7 +57,11 @@ function App() {
       <h1>Job Applications</h1>
       <NewApplicationForm onCreated = {handleCreated}/>
       
-      <ApplicationsTable applications={applications}/>
+      <ApplicationsTable 
+        applications = {applications}
+        onUpdated = {handleUpdated}
+        onDeleted = {handleDeleted}
+      />
     </div>
   );
 

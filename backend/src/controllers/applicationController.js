@@ -1,6 +1,8 @@
 const {
     getAllApplications,
     createApplication,
+    updateApplicationModel,
+    deleteApplicationModel,
 } = require("../models/applicationModel");
 
 
@@ -40,8 +42,48 @@ function createNewApplication(req, res) {
     }
 }
 
+function updateApplication(req, res) {
+    const id = Number(req.params.id);
+    const { status, notes } = req.body;
+
+    if (!status && !notes) {
+        return res.status(400).json({ error: "Nothing to update" });
+    }
+
+    try {
+        const updated = updateApplicationModel(id, { status, notes });
+
+        if (!updated) {
+            return res.status(404).json({ error: "Application not found" });
+        }
+
+        res.json(updated);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Failed to update application" });
+    }
+}
+
+function deleteApplication(req, res) {
+    const id = Number(req.params.id);
+
+    try {
+        const deleted = deleteApplicationModel(id);
+
+        if (!deleted) {
+            return res.status(404).json({ error: "Application not found" });
+        }
+
+        res.json({ success: true });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Failed to delete application" });
+    }
+}
 
 module.exports = {
     getApplications,
     createNewApplication,
+    updateApplication,
+    deleteApplication,
 };

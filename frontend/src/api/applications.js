@@ -24,3 +24,23 @@ export async function createApplication(data) {
 
     return res.json();
 }
+
+export async function updateApplication(id, data) {
+    const res = await fetch(`${BASE_URL}/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+    });
+
+    if (!res.ok) throw new Error("Failed to update");
+
+    return res.json();
+}
+
+export async function deleteApplication(id) {
+    const res = await fetch(`${BASE_URL}/${id}`, {
+        method: "DELETE",
+    });
+
+    if (!res.ok) throw new Error("Failed to delete");
+}
