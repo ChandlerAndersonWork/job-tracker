@@ -25,18 +25,18 @@ Full-stack job application tracking system built with React, Node.js, Express, a
 - SQLite (better-sqlite3)
 
 ## Architecture
-job-tracker/
-  frontend/
-    src/
-      api/
-      components/
-      types/
-  backend/
-    src/
-      controllers/
-      db/
-      models/
-      routes/
+job-tracker/  
+  frontend/  
+    src/  
+      api/  
+      components/  
+      types/  
+  backend/  
+    src/  
+      controllers/  
+      db/  
+      models/  
+      routes/  
 
 Backend follows a layered pattern:
 Routes -> Controllers -> Models -> Database
@@ -58,7 +58,7 @@ Routes -> Controllers -> Models -> Database
 - npm run dev
 
 Server runs on:
-http://localhost:5000
+localhost:5000
 
 ### Frontend
 - cd frontend
@@ -66,7 +66,7 @@ http://localhost:5000
 - npm run dev
 
 App runs on:
-http://localhost:5173
+localhost:5173
 
 ### Future Improvements
 - Status filtering
